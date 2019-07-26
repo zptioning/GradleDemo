@@ -9,7 +9,7 @@ public class LifeCycleConfig {
     /**
      * 生成代理类的包名
      */
-    public static final String PROXY_CLASS_PACKAGE_NAME = "com.hm.iou.lifecycle.apt.proxy";
+    public static final String PROXY_CLASS_PACKAGE_NAME = "com.zptioning.gradledemo1";
 
     /**
      * 生成代理类统一的后缀

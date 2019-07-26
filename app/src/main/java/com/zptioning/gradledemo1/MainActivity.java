@@ -1,7 +1,7 @@
 package com.zptioning.gradledemo1;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.zptioning.lib_api.AppLifeCycleManager;

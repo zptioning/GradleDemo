@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+//引入自定义插件，插件名与前面的*.properties文件的文件名是一致的
+apply plugin:'com.zptioning.plugin.lifecycle'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        // 自定义插件maven地址
+        maven { url uri('../repo') }
+    }
+    dependencies{
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        // 通过maven加载自定义插件  由maven配置决定
+        // groupId:artifactId:version
+        classpath 'com.zptioning.lib_plugin:life_cycle:1.0.0'
+    }
+}
+
+
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.zptioning.gradledemo1"
+        minSdkVersion 25
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation project(':lib_annotation')
+    implementation project(':lib_api')
+    //需要注意这里是使用 annotationProcessor，即我们刚定义的注解处理器
+    annotationProcessor project(':lib_apt')
+}
